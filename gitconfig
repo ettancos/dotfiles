@@ -1,0 +1,18 @@
+[user]
+	email = tancos@outlook.hu
+	name = Tamás Táncos
+[color]
+    ui = auto
+[core]
+    editor = vim
+    pager = LESSCHARSET=utf-8 less
+    autocrlf = input
+[diff]
+    mnemonicprefix = true
+    rename = copy
+[push]
+	default = simple
+[grep]
+    lineNumber = true
+[interactive]
+    singlekey = true

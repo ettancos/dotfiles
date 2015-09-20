@@ -1,0 +1,4 @@
+alias v='f -e vim'
+alias vrc='vim ~/.vim/vimrc'
+alias zrc='vim ~/.zshrc'
+alias l='ls -1Fh'
