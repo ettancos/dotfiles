@@ -19,4 +19,5 @@ case ":$PATH:" in
 esac
 
 eval $(dircolors ~/.dir_colors)
-. /home/vivek/.profabevjava
+. .bashrc
+#. /home/vivek/.profabevjava
