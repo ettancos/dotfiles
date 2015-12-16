@@ -7,7 +7,8 @@
 export JDK_HOME=/usr/lib/jvm/java-8-jdk
 export JAVA_HOME=$JDK_HOME
 export JRE_HOME=$JDK_HOME/jre
-export PATH=$PATH:$HOME/bin
+export PYTHON_VENV=$HOME/apps/venv/bin
+export PATH=$PATH:$PYTHON_VENV:$HOME/bin
 
 case ":$PATH:" in
     *":$JDK_HOME/bin:"* )
@@ -21,3 +22,4 @@ esac
 eval $(dircolors ~/.dir_colors)
 . .bashrc
 #. /home/vivek/.profabevjava
+
