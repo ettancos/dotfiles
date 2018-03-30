@@ -10,6 +10,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+bindkey "\e[1;3C" emacs-forward-word
+bindkey "\e[1;3D" emacs-backward-word
+
 eval "$(fasd --init auto)"
 eval $(thefuck --alias)
 . ~/.aliases
