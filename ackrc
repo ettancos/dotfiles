@@ -1,6 +1,3 @@
-# ack config
---pager=less -FirSwX
-
 # custom types
 --type-set
 ronn=.ronn,.ron

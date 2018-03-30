@@ -3,8 +3,8 @@ URxvt*buffered: true
 URxvt*cursorBlink: true
 !URxvt*underlineColor: yellow
 
-!URxvt*font: xft:Liberation Mono for Powerline,Literation Mono Powerline:style=Regular:size=10
-URxvt*font: xft:Inconsolata\-dz for Powerline:style=dz:pixelsize=15:antialias=true:hinting=true
+!URxvt*font: xft:Liberation Mono,Literation Mono:style=Regular:size=10
+URxvt*font: xft:Inconsolata\-dz:style=dz:pixelsize=15:antialias=true:hinting=true
 !URxvt*boldFont:  xft:Inconsolata\-dz for Powerline:style=dz:size=11:antialias=true:hinting=true:bold
 URxvt*depth: 32
 
