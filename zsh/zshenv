@@ -6,6 +6,10 @@
 #
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
-if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+export ANSIBLE_REMOTE_TEMP=/tmp/ansible-ttancos
+export ANSIBLE_VAULT_PASSWORD_FILE=$HOME/.vault.txt
+

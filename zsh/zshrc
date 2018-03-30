@@ -11,4 +11,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 eval "$(fasd --init auto)"
+eval $(thefuck --alias)
 . ~/.aliases
+

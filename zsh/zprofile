@@ -62,10 +62,14 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
+# Source .profile
+if [[ -e "$HOME/.profile" ]]; then
+  emulate sh -c "source ~/.profile"
+fi
+
 #
 # Temporary Files
 #
-
 if [[ ! -d "$TMPDIR" ]]; then
   export TMPDIR="/tmp/$LOGNAME"
   mkdir -p -m 700 "$TMPDIR"
