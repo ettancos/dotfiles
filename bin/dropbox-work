@@ -1,0 +1,14 @@
+#! /bin/bash
+
+case "$1" in
+    start)
+        HOME="$HOME/.dropbox-alt" /usr/bin/dropbox-cli start -i
+    ;;
+    stop)
+        HOME="$HOME/.dropbox-alt" /usr/bin/dropbox-cli stop
+    ;;
+    *)
+        echo "`basename $0` start|stop"
+    ;;
+esac
+
