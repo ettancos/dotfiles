@@ -1,0 +1,106 @@
+{
+    "layer": "top",
+    "height": 25,
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["tray", "idle_inhibitor", "temperature", "cpu", "memory", "network", "backlight", "pulseaudio", "battery", "battery#bat2", "clock"],
+    // Modules configuration
+    "sway/workspaces": {
+        "tooltip": false,
+        "disable-scroll": true,
+        "all-outputs": true
+        //"format": "{icon}",
+        //"format-icons": {
+        //    "1": "",
+        //    "2": "",
+        //    "3": "",
+        //    "4": ""
+        //}
+    },
+    "sway/mode": {
+        "tooltip": false,
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "idle_inhibitor": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "tooltip": false,
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip": false,
+        "format": "{:%d/%m/%y %a %H:%M}",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}%/{load}% "
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C ",
+        "on-click": "gnome-system-monitor"
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""],
+        "on-click": "light -S 100",
+        "on-click-right": "light -S 20",
+        "on-scroll-up": "light -U 3",
+        "on-scroll-down": "light -A 3"
+    },
+    "battery": {
+        "bat": "BAT0",
+        "tooltip": false,
+        "states": {
+            "good": 95,
+            "warning": 40,
+            "critical": 20
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery": {
+        "bat": "BAT1",
+        "tooltip": false,
+        "states": {
+            "good": 95,
+            "warning": 40,
+            "critical": 20
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠"
+    },
+    "pulseaudio": {
+        "tooltip": false,
+        "scroll-step": 3,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    }
+}
+

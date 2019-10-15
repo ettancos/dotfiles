@@ -1,0 +1,40 @@
+[user]
+	email = tamas.tancos@emarsys.com
+	name = Tamás Táncos
+	signingkey = 627645F33BDD8808
+[color]
+    ui = auto
+[core]
+    editor = vim
+    pager = LESSCHARSET=utf-8 less
+    autocrlf = input
+[diff]
+    mnemonicprefix = true
+    rename = copy
+	tool = vscode
+[push]
+	default = simple
+[grep]
+    lineNumber = true
+[interactive]
+    singlekey = true
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+[pull]
+	rebase = true
+[credential]
+	helper = cache
+[merge]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[commit]
+	gpgsign = true

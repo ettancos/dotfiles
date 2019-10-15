@@ -1,0 +1,272 @@
+# efault config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+#exec echo $PATH
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Your preferred terminal emulator
+set $term Alacritty
+# Your preferred application launcher
+# Note: it's recommended that you pass the final command to sway
+#set $menu rofi -combi -show combi -modi combi -m -4 -location 0 -no-levenshtein-sort -lazy-filter-limit 5500
+set $menu wofi -S drun -i
+set $clipboard ~/bin/clipboard
+
+default_border normal
+hide_edge_borders smart
+smart_borders on
+focus_follows_mouse no
+mouse_warping none
+font pango:sans-serif 10
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in __DATADIR__/backgrounds/sway/)
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/images/Girl.png fill
+output eDP-1 bg ~/images/rain_by_haryarti-d37m2dn.jpg fill
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Input configuration
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+### Key bindings
+#
+# Basics:
+#
+    # start a terminal
+    bindsym $mod+Return exec $term
+    bindsym $mod+Shift+r exec pkill rofi
+
+    # kill focused window
+    bindsym $mod+Shift+q kill
+
+    # start your launcher
+    bindsym $mod+d exec $menu
+    bindsym $mod+c exec $clipboard
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # reload the configuration file
+    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+d border toggle
+
+    # exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'systemctl --user stop sway-session.service || swaymsg exit'
+
+    # screenshot all outputs
+    bindsym Print exec grim $(xdg-user-dir PICTURES)/Screenshot-$(date +'%Y-%m-%d-%H%M%S.png')
+    # screenshot currently focused monitor
+    bindsym Shift+Print exec grim -o $(echo `swaymsg -t get_tree | jq '.nodes[] | select(recurse(.nodes[]) | .focused).name' | tr -d '"'`) $(xdg-user-dir PICTURES)/Screenshot-$(date +'%Y-%m-%d-%H%M%S.png')
+    # screenshot selected region
+    bindsym Control+Print exec slurp | grim -g - $(xdg-user-dir PICTURES)/Screenshot-$(date +'%Y-%m-%d-%H%M%S.png')
+
+    # Laptop Function keys
+    bindsym XF86MonBrightnessUp exec light -A 5
+    bindsym XF86MonBrightnessDown exec light -U 5
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
+    bindsym XF86AudioPlay exec "mpris-ctl pp"
+    bindsym XF86AudioStop exec "mpris-ctl stop"
+    bindsym XF86AudioNext exec "mpris-ctl next"
+    bindsym XF86AudioPrev exec "mpris-ctl prev"
+#
+# Moving around:
+#
+    bindsym $mod+p exec $HOME/bin/lock.sh
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+
+    # Or with arrow keys $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # _move_ the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+
+    # ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    # switch to workspace
+    bindsym $mod+1 workspace 1
+    bindsym $mod+2 workspace 2
+    bindsym $mod+3 workspace 3
+    bindsym $mod+4 workspace 4
+    bindsym $mod+5 workspace 5
+    bindsym $mod+6 workspace 6
+    bindsym $mod+7 workspace 7
+    bindsym $mod+8 workspace 8
+    bindsym $mod+9 workspace 9
+    bindsym $mod+0 workspace 10
+    # move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace 1
+    bindsym $mod+Shift+2 move container to workspace 2
+    bindsym $mod+Shift+3 move container to workspace 3
+    bindsym $mod+Shift+4 move container to workspace 4
+    bindsym $mod+Shift+5 move container to workspace 5
+    bindsym $mod+Shift+6 move container to workspace 6
+    bindsym $mod+Shift+7 move container to workspace 7
+    bindsym $mod+Shift+8 move container to workspace 8
+    bindsym $mod+Shift+9 move container to workspace 9
+    bindsym $mod+Shift+0 move container to workspace 10
+
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+    bindsym $mod+Mod1+$left move workspace to output left
+    bindsym $mod+Mod1+$up move workspace to output up
+    bindsym $mod+Mod1+$down move workspace to output down
+    bindsym $mod+Mod1+$right move workspace to output right
+
+    bindsym $mod+Mod1+Left move workspace to output left
+    bindsym $mod+Mod1+Up move workspace to output up
+    bindsym $mod+Mod1+Down move workspace to output down
+    bindsym $mod+Mod1+right move workspace to output right
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+#
+# Resizing containers:
+#
+bindsym $mod+r mode "resize"
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+n mode "notifications"
+mode notifications {
+    bindsym Escape mode "default"
+	bindsym Return exec makoctl invoke; exec makoctl dismiss; mode default
+	bindsym d exec makoctl dismiss; mode default
+	bindsym Shift+d exec makoctl dismiss -a; mode default
+}
+
+#
+# Toggle floating mode automatically for these windows
+#
+for_window [title=".*"] title_format %title (app_id=%app_id class=%class shell=%shell)
+for_window [app_id="wdisplays"] floating enable
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="modem-manager-gui"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [app_id="eog"] floating enable, border csd
+for_window [app_id="evince"] floating enable, border csd
+for_window [app_id="^gnome-"] floating enable, border csd
+for_window [app_id="^org.gnome"] floating enable, border csd
+for_window [app_id="mpv"] floating enable
+for_window [app_id="imv"] floating enable
+for_window [app_id="firefox"] inhibit_idle fullscreen, border none
+for_window [app_id="rofi"] floating enable, border none
+for_window [class="Spotify"] floating enable
+for_window [class="Bitwarden"] floating enable
+for_window [class="Insomnia"] floating enable
+for_window [class="Zoom"] floating enable
+for_window [class="XEyes"] floating enable
+
+focus_on_window_activation urgent
+
+#include /etc/sway/config.d/*
+
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+#bar {
+#    position top
+#    swaybar_command waybar
+#}
+
+include /etc/sway/config.d/*
+
+exec kanshi >/tmp/kanshi.log 2>&1
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY I3SOCK SWAYSOCK XDG_SEAT XDG_SESSION_TYPE XDG_DATA_DIRS
+#exec systemctl --user import-environment
+exec systemctl --user start sway-session.target
+#exec systemctl --user restart waybar
+#exec systemctl --user restart mako
+#exec systemctl --user restart swayidle
+#exec systemctl --user restart libinput-gestures
+#exec systemctl --user restart clip-history
+#exec systemctl --user restart polkit-gnome-authentication-agent-1
+

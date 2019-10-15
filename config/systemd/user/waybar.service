@@ -1,0 +1,13 @@
+[Unit]
+Description=Highly customizable Wayland bar for Sway and Wlroots based compositors.
+Documentation=https://github.com/Alexays/Waybar/wiki/
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+#ExecStart=env
+#ExecStart=/usr/bin/waybar
+ExecStart=/home/ttancos/work/other/Waybar/build/meson-out/waybar
+
+[Install]
+WantedBy=sway-session.target

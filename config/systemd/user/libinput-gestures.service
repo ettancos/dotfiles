@@ -1,0 +1,11 @@
+[Unit]
+Description=A service to run actions on touchpad gestures
+Documentation=https://github.com/bulletmark/libinput-gestures
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/libinput-gestures
+
+[Install]
+WantedBy=sway-session.target

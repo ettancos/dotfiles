@@ -1,0 +1,13 @@
+{
+  output eDP-1 mode 2560x1440 position 0,0
+}
+{
+  output HDMI-A-2 mode 1920x1200 position 0,0
+  output eDP-1 mode 2560x1440 position 1920,0
+}
+{
+  output "Lenovo Group Limited LEN T2454pA V1603461" mode 1920x1200 position 0,0
+  output "Hewlett Packard HP ZR2440w CNT20102GM" mode 1920x1200 position 1920,0
+  output eDP-1 mode 2560x1440 position 3840,0
+}
+

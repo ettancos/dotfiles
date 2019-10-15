@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+export GDK_BACKEND=wayland
+exec /home/ttancos/apps/firefox-nightly/firefox

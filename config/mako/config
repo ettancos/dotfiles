@@ -1,0 +1,34 @@
+font=DejaVu Sans Mono 11
+text-color=#d8dee9
+background-color=#3b4252cc
+border-color=#3b425211
+border-radius=7
+border-size=7
+padding=7
+#margin=10
+default-timeout=30000
+#max-visible=5
+layer=overlay
+group-by=summary
+format=<span font='7'>%a</span>\n<b>%s</b>\n%b
+icon-path=/usr/share/icons/Arc:/usr/share/icons/Adwaita
+max-icon-size=48
+
+[hidden]
+format=(and %h more)
+text-color=#777777
+
+[urgency=high]
+background-color=#3b4252
+border-color=#ff0000
+
+[urgency=low]
+background-color=#3b4252cb
+text-color=#d8dee9
+
+[app-name="Spotify"]
+ignore-timeout=1
+default-timeout=10000
+
+[grouped]
+format=<span font='7'>%a</span>\n(%g) <b>%s</b>\n%b

@@ -1,0 +1,28 @@
+[Added Associations]
+application/x-shellscript=visual-studio-code-insiders.desktop;
+x-scheme-handler/http=userapp-Nightly-EWFV0Z.desktop;firefox-nightly-wl.desktop;firefox-nightly-wl.desktop;
+x-scheme-handler/https=userapp-Nightly-EWFV0Z.desktop;firefox-nightly-wl.desktop;firefox-nightly-wl.desktop;
+text/html=userapp-Nightly-EWFV0Z.desktop;firefox-nightly-wl.desktop;firefox-nightly-wl.desktop;
+application/xhtml+xml=userapp-Nightly-EWFV0Z.desktop;firefox-nightly-wl.desktop;firefox-nightly-wl.desktop;
+text/plain=org.gnome.gedit.desktop;visual-studio-code-insiders-url-handler.desktop;
+x-scheme-handler/ftp=firefox-nightly-wl.desktop;
+x-scheme-handler/chrome=firefox-nightly-wl.desktop;
+application/x-extension-htm=firefox-nightly-wl.desktop;
+application/x-extension-html=firefox-nightly-wl.desktop;
+application/x-extension-shtml=firefox-nightly-wl.desktop;
+application/x-extension-xhtml=firefox-nightly-wl.desktop;
+application/x-extension-xht=firefox-nightly-wl.desktop;
+
+[Default Applications]
+x-scheme-handler/http=firefox-nightly-wl.desktop
+x-scheme-handler/https=firefox-nightly-wl.desktop
+x-scheme-handler/ftp=firefox-nightly-wl.desktop
+x-scheme-handler/chrome=firefox-nightly-wl.desktop
+text/html=firefox-nightly-wl.desktop
+application/x-extension-htm=firefox-nightly-wl.desktop
+application/x-extension-html=firefox-nightly-wl.desktop
+application/x-extension-shtml=firefox-nightly-wl.desktop
+application/xhtml+xml=firefox-nightly-wl.desktop
+application/x-extension-xhtml=firefox-nightly-wl.desktop
+application/x-extension-xht=firefox-nightly-wl.desktop
+text/plain=visual-studio-code-insiders-url-handler.desktop

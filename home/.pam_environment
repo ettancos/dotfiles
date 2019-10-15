@@ -1,0 +1,12 @@
+# java
+JDK_HOME    DEFAULT=/usr/lib/jvm/java-8-jdk
+JAVA_HOME   DEFAULT=${JDK_HOME}
+JRE_HOME    DEFAULT=${JDK_HOME}/jre
+
+GOPATH      DEFAULT=/opt/go
+PYTHON_VENV DEFAULT=${HOME}/apps/venv/bin
+ANSIBLE_REMOTE_USER DEFAULT=ansible
+
+#PATH=$PATH:$PYTHON_VENV:${HOME}/bin
+
+ACK_OPTIONS DEFAULT=' --pager=less -FirSwX '

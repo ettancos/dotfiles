@@ -1,9 +1,0 @@
-alias vi=nvim
-alias vim=nvim
-alias v='f -e nvim'
-alias vrc='nvim ~/.vim/vimrc'
-alias zrc='nvim ~/.zshrc'
-alias l='ls -1Fh'
-alias ipython='nocorrect ipython'
-alias fuck='nocorrect fuck'
-#alias ssh='TERM=xterm ssh'

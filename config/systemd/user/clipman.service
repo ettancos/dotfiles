@@ -1,0 +1,9 @@
+[Unit]
+Description=Clipboard events are streamed into a manager service
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=wl-paste -t text --watch clipman store
+
+[Install]
+WantedBy=sway-session.target

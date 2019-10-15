@@ -1,0 +1,17 @@
+[Unit]
+Description=sway - SirCmpwn's Wayland window manager
+Documentation=man:sway(5)
+BindsTo=graphical-session.target
+Wants=graphical-session-pre.target
+After=graphical-session-pre.target
+
+[Service]
+Type=notify
+EnvironmentFile=-%h/.config/sway/env
+ExecStart=/usr/bin/sway
+ExecStop=swaymsg exit
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=15
+NotifyAccess=all
+TimeoutStartSec=3600

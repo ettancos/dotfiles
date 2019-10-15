@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+import sdnotify
+import time
+import os
+
+pid = int(os.popen('pgrep -x sway').read())
+
+# Inform systemd that we've finished our startup sequence...
+n = sdnotify.SystemdNotifier()
+print(f"pid {pid}")
+n.notify(f"MAINPID={pid}\nREADY=1")
+# give systemd time to recognize the process
+time.sleep(5)

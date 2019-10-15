@@ -1,9 +1,0 @@
-# custom types
---type-set
-ronn=.ronn,.ron
-
---type-set
-scss=.scss
-
---type-set
-coffeescript=.coffee

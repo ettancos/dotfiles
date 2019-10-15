@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+INTERM=$([[ "$1" == "-t" ]] && echo true)
+
+# Echo clipboard items to Rofi and save the selection made by user
+if [[ -n "$INTERM" || -z "$WAYLAND_DISPLAY" ]]; then
+  selected=$(clipman pick --tool=STDOUT | fzf --prompt='')
+else
+  selected=$(clipman pick --tool=STDOUT | wofi -S dmenu --cache-file /dev/null)
+fi
+selected="${selected%\"}"
+selected="${selected#\"}"
+
+
+if [ -n "${selected}" ]; then
+  wl-copy -t text/plain """$(printf "${selected}")"""
+fi

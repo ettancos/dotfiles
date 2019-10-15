@@ -1,0 +1,73 @@
+@import './nord.css';
+
+* {
+    border: none;
+    border-radius: 0;
+    color: @nord6;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @nord0;
+    opacity: 0.91;
+    border-bottom: 3px solid @nord3;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    border-bottom: 3px solid transparent;
+}
+
+/* Removes Strange Hover effect */
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: @nord3;
+}
+
+#workspaces button.focused,
+#mode
+{
+    background: @nord1;
+    border-bottom: 3px solid @nord3;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#idle_inhibitor,
+#network,
+#mode
+{
+    padding: 0 5px;
+    margin: 0 5px;
+    border-bottom: 3px solid @nord3;
+}
+
+#battery.charging {
+    background-color: @nord14;
+    color: @nord1;
+}
+
+@keyframes blink {
+    to {
+        background-color: @nord11;
+	color: @nord8;
+    }
+}
+
+#battery.warning:not(.charging) {
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network.disconnected {
+    background: @nord11;
+}

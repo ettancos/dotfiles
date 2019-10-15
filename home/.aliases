@@ -1,0 +1,17 @@
+alias vi=nvim
+alias vim=nvim
+alias v='f -e nvim'
+alias vrc='nvim ~/.vim/vimrc'
+alias zrc='nvim ~/.zshrc'
+alias l='ls -1Fh'
+alias ipython='nocorrect ipython'
+alias fuck='nocorrect fuck'
+alias pull='git stash && git pull && git stash pop'
+alias ssh='TERM=xterm ssh'
+alias switch-cluster='source ~/work/ems-me-toolsmith/tools/gcloud/switch-cluster.sh'
+alias sctl='sudo systemctl'
+alias ssctl='sudo systemctl'
+alias srestart='sudo systemctl restart'
+alias restart='systemctl --user restart'
+alias sreload='sudo systemctl restart'
+alias reload='systemctl --user restart'
