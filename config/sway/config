@@ -20,7 +20,7 @@ set $term Alacritty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 #set $menu rofi -combi -show combi -modi combi -m -4 -location 0 -no-levenshtein-sort -lazy-filter-limit 5500
-set $menu wofi -S drun -i
+set $menu wofi -S drun -I
 set $clipboard ~/bin/clipboard
 
 default_border normal

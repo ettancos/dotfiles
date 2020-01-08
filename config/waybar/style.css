@@ -4,8 +4,8 @@
     border: none;
     border-radius: 0;
     color: @nord6;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: "FontAwesome 5 Free Solid", Hack, sans-serif;
+    font-size: 12px;
     min-height: 0;
 }
 
@@ -36,6 +36,7 @@ window#waybar {
 }
 
 #clock,
+#pulseaudio,
 #battery,
 #cpu,
 #memory,
