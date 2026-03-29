@@ -49,7 +49,9 @@
   #helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 [commit]
 	template = ~/.config/git/message
+{{- if eq .chezmoi.hostname "viel60428131a" }}
   gpgsign = true
+{{- end }}
 ; [filter "lfs"]
 ; 	clean = git-lfs clean -- %f
 ; 	smudge = git-lfs smudge -- %f
