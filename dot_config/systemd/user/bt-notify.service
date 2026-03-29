@@ -5,7 +5,7 @@ After=bluetooth.target graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/home/i525646/.local/bin/bt-notify
+ExecStart=/home/i525646/bin/bt-notify
 Restart=on-failure
 RestartSec=5
 # Notify-send needs the session D-Bus; user services get this via XDG_RUNTIME_DIR

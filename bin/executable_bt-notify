@@ -1,0 +1,49 @@
+#!/usr/bin/python3
+"""Desktop notifications for Bluetooth device connect/disconnect via BlueZ D-Bus signals."""
+
+import subprocess
+import sys
+
+import dbus
+import dbus.mainloop.glib
+from gi.repository import GLib
+
+
+def on_properties_changed(interface, changed, invalidated, path):
+    if interface != "org.bluez.Device1":
+        return
+    if "Connected" not in changed:
+        return
+
+    try:
+        bus = dbus.SystemBus()
+        obj = bus.get_object("org.bluez", path)
+        props = dbus.Interface(obj, "org.freedesktop.DBus.Properties")
+        name = str(props.Get("org.bluez.Device1", "Name"))
+    except Exception:
+        name = "Unknown device"
+
+    if changed["Connected"]:
+        subprocess.Popen([
+            "notify-send", "-i", "bluetooth", "-t", "3000",
+            "Bluetooth connected", name,
+        ])
+    else:
+        subprocess.Popen([
+            "notify-send", "-i", "bluetooth-disabled", "-t", "3000",
+            "Bluetooth disconnected", name,
+        ])
+
+
+dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+bus = dbus.SystemBus()
+bus.add_signal_receiver(
+    on_properties_changed,
+    dbus_interface="org.freedesktop.DBus.Properties",
+    signal_name="PropertiesChanged",
+    path_keyword="path",
+    arg0="org.bluez.Device1",
+)
+
+loop = GLib.MainLoop()
+loop.run()
