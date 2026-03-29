@@ -1,0 +1,27 @@
+vim=nvim
+grep=rg
+cz=chezmoi
+k=kubectl
+kctx=kubectl config use-context
+kapply=kubectl apply -f
+gap=kubectl config use-context gap
+gap-stage=kubectl config use-context gap-stage
+edp-stage=kubectl config use-context edp-stage
+gap-hq=kubectl config use-context gap-hq
+gap-sbx-use4=kubectl config use-context gap-sbx-use4
+#docker=podman
+n=nnn
+ls=exa
+q=fend
+du=dust
+top=bpytop
+#wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+
+# systemd
+sctl=systemctl --user
+st=systemctl --user status
+sst=systemctl status
+restart=systemctl --user restart
+srestart=sudo systemctl restart
+stop=systemctl --user stop
+sstop=sudo systemctl stop
