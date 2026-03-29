@@ -1,0 +1,16 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export ATLASSIAN_EMAIL:tamas\x2etancos\x40emarsys\x2ecom
+SETUVAR --export DISPLAY:\x3a0
+SETUVAR --export LESS_TERMCAP_mb:\x1b\x5b1m\x1b\x5b34m
+SETUVAR --export LESS_TERMCAP_md:\x1b\x5b1m\x1b\x5b36m
+SETUVAR --export LESS_TERMCAP_me:\x1b\x28B\x1b\x5bm
+SETUVAR --export LESS_TERMCAP_se:\x1b\x28B\x1b\x5bm
+SETUVAR --export LESS_TERMCAP_so:\x1b\x5b30m\x1b\x5b47m
+SETUVAR --export LESS_TERMCAP_ue:\x1b\x28B\x1b\x5bm
+SETUVAR --export LESS_TERMCAP_us:\x1b\x5b4m\x1b\x5b35m
+SETUVAR --export OPENCODE_DISABLE_AUTOUPDATE:true
+SETUVAR --export OPENCODE_DISABLE_CLAUDE_CODE:1
+SETUVAR __fish_initialized:4300
+SETUVAR __prompt_sync:current\x2dcontext\x3a\x20gap\x2ds\x2dus1\x2d01
+SETUVAR fish_greeting:Welcome\x20to\x20fish\x2c\x20the\x20friendly\x20interactive\x20shell

@@ -1,0 +1,122 @@
+[global]
+    ### Display ###
+    follow = keyboard
+    width = 250
+    height = (0, 300)
+    origin = top-right
+    offset = (30, 30)
+    scale = 0
+    notification_limit = 10
+
+    ### Progress bar ###
+    progress_bar = true
+    progress_bar_height = 12
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 230
+    progress_bar_corner_radius = 3
+
+    icon_corner_radius = 3
+    indicate_hidden = yes
+
+    padding = 8
+    horizontal_padding = 8
+    text_icon_padding = 6
+
+    frame_width = 2
+    frame_color = "#4c566a"
+    gap_size = 5
+    separator_color = frame
+
+    sort = yes
+    idle_threshold = 300
+
+    ### Text ###
+    font = Input Mono 9
+    line_height = 2
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = end
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+
+    ### Icons ###
+    enable_recursive_icon_lookup = true
+    icon_theme = "Nova-galactic, Zafiro-Icons-Dark, Adwaita"
+    icon_position = left
+    min_icon_size = 24
+    max_icon_size = 64
+
+    ### History ###
+    sticky_history = yes
+    history_length = 20
+
+    ### Misc ###
+    dmenu = /usr/bin/fuzzel --dmenu --log-level=none --log-no-syslog --prompt "dunst: "
+    browser = /usr/bin/xdg-open
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    corner_radius = 5
+    ignore_dbusclose = false
+
+    ### Wayland ###
+    force_xwayland = false
+
+    ### Mouse ###
+    mouse_left_click = do_action, close_current
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
+
+[experimental]
+    per_monitor_dpi = true
+
+
+[urgency_low]
+    background = "#3b42528a"
+    foreground = "#d8dee9aa"
+    frame_color = "#4c566a"
+    timeout = 10
+
+[urgency_normal]
+    background = "#434c5ecc"
+    foreground = "#d8dee9ef"
+    frame_color = "#81a1c1"
+    timeout = 10
+
+[urgency_critical]
+    background = "#434c5eef"
+    foreground = "#d8dee9ef"
+    frame_color = "#bf616a"
+    timeout = 60
+
+
+### Rules ###
+
+[fullscreen_show_critical]
+    msg_urgency = critical
+    fullscreen = show
+
+[volume]
+    appname = "volume"
+    summary = "*"
+    set_stack_tag = "volume"
+
+[firefox]
+    desktop_entry = "firefox-nightly"
+    default_icon = firefox-nightly
+
+[slack]
+    desktop_entry = "com.slack.Slack"
+    default_icon = com.slack.Slack
+
+[zoom]
+    desktop_entry = "us.zoom.Zoom"
+    default_icon = us.zoom.Zoom
+
+# vim: ft=cfg

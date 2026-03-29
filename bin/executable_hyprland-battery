@@ -1,0 +1,185 @@
+#!/usr/bin/env fish
+
+# Hyprland battery saver - disables features when battery is low
+
+set -g HAS_FYI 0
+if type -q fyi
+    set -g HAS_FYI 1
+end
+
+function maybe_notify --argument-names message
+    if test "$HAS_FYI" = "1"
+        fyi "$message"
+    end
+end
+
+function hkw --argument-names key value
+    if not hyprctl keyword $key $value >/dev/null 2>&1
+        echo "Error: Failed to set $key" >&2
+        return 1
+    end
+end
+
+function do_reload
+    if not hyprctl reload >/dev/null 2>&1
+        echo "Error: Failed to reload hyprland config" >&2
+        return 1
+    end
+end
+
+function disable_effects
+    hkw decoration:blur:enabled 0; or return 1
+    hkw animations:enabled 0; or return 1
+end
+
+function get_battery_device
+    set devices (upower -e 2>/dev/null | string match -r '.*/battery_.*')
+    if test -z "$devices"
+        echo "Error: No battery device found via upower" >&2
+        return 1
+    end
+    echo "$devices[1]"
+end
+
+# Returns two lines: capacity (integer) then mode (charging|normal|low|critical)
+function get_power_mode
+    set device (get_battery_device)
+    if test "$status" -ne 0
+        return 1
+    end
+
+    set info (upower -i "$device" 2>/dev/null)
+    if test "$status" -ne 0
+        echo "Error: Could not read battery info" >&2
+        return 1
+    end
+
+    set pct_line (string match -r '\s+percentage:\s+\d+%' -- $info)
+    set capacity (string replace -ra '[^0-9]' '' -- "$pct_line")
+
+    set state_line (string match -r '\s+state:\s+\S+' -- $info)
+    set state (string trim "$state_line" | string replace -r 'state:\s+' '')
+
+    if test -z "$capacity"; or test -z "$state"
+        echo "Error: Could not parse battery info" >&2
+        return 1
+    end
+
+    echo "$capacity"
+
+    if test "$state" != "discharging"
+        echo "charging"
+    else if test "$capacity" -le 30
+        echo "critical"
+    else if test "$capacity" -le 70
+        echo "low"
+    else
+        echo "normal"
+    end
+end
+
+function apply_mode --argument-names mode capacity
+    switch "$mode"
+        case charging
+            echo "Battery: $capacity% - CHARGING: Reloading config"
+            do_reload; or return 1
+            maybe_notify "🔌 Charging - Battery $capacity% - Full features enabled"
+
+        case normal
+            echo "Battery: $capacity% - Reloading config"
+            do_reload; or return 1
+            maybe_notify "🔋 Battery $capacity% - Full features enabled"
+
+        case low
+            echo "Battery: $capacity% - Disabling blur and animations"
+            disable_effects; or return 1
+            maybe_notify "🪫 Battery $capacity% - Power saving enabled"
+
+        case critical
+            echo "Battery: $capacity% - CRITICAL: Entering aggressive power save"
+            disable_effects; or return 1
+            hkw general:gaps_in 0; or return 1
+            hkw general:gaps_out 0; or return 1
+            hkw general:border_size 0; or return 1
+            maybe_notify "🔴 Battery CRITICAL: $capacity% - Aggressive power save"
+
+        case '*'
+            echo "Error: Unknown power mode '$mode'" >&2
+            return 1
+    end
+
+    return 0
+end
+
+function apply_battery_saver
+    set result (get_power_mode)
+    if test "$status" -ne 0
+        return 1
+    end
+    apply_mode "$result[2]" "$result[1]"
+end
+
+function run_monitor
+    echo "Monitoring battery events via upower..."
+
+    set last_mode "unknown"
+
+    # Apply immediately on startup
+    set result (get_power_mode)
+    if test "$status" -eq 0
+        apply_mode "$result[2]" "$result[1]"
+        set last_mode "$result[2]"
+    end
+
+    # Block on upower events - fires instantly on plug/unplug
+    upower --monitor | while read --line event
+        set result (get_power_mode)
+        if test "$status" -ne 0
+            continue
+        end
+
+        set mode $result[2]
+
+        if test "$mode" != "$last_mode"
+            if apply_mode "$mode" "$result[1]"
+                set last_mode "$mode"
+            end
+        end
+    end
+end
+
+if test (count $argv) -gt 0
+    switch "$argv[1]"
+        case --monitor
+            set monitor_mode 1
+        case --help -h
+            echo "Usage: hyprland-battery [--monitor]"
+            exit 0
+        case '*'
+            echo "Error: Unknown option '$argv[1]'" >&2
+            echo "Usage: hyprland-battery [--monitor]" >&2
+            exit 1
+    end
+
+    if test (count $argv) -gt 1
+        echo "Error: Too many arguments" >&2
+        echo "Usage: hyprland-battery [--monitor]" >&2
+        exit 1
+    end
+end
+
+if not type -q hyprctl
+    echo "Error: hyprctl not found" >&2
+    exit 1
+end
+
+if not type -q upower
+    echo "Error: upower not found" >&2
+    exit 1
+end
+
+if set -q monitor_mode
+    run_monitor
+else
+    apply_battery_saver
+end

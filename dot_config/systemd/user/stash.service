@@ -1,0 +1,14 @@
+[Unit]
+Description=Wayland clipboard manager with fast persistent history and multi-media support
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.cargo/bin/stash --excluded-apps Bitwarden watch
+Restart=on-failure
+LoadCredential=clipboard_filter:/etc/stash/clipboard_filter
+
+[Install]
+WantedBy=graphical-session.target

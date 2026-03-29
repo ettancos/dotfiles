@@ -1,0 +1,100 @@
+/*
+ * vim: sts=2 ts=2 sw=2 et
+ */
+@import './nord.css';
+
+#waybar {
+  font-family: ui-monospace, monospace, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  background: alpha(@nord0, 0.5);
+  color: @nord7;
+}
+
+tooltip {
+    background: alpha(@nord0, 0.8);
+    font-size: 10px;
+}
+
+#workspaces .text-button {
+  padding: 0 3px;
+  color: @nord7;
+}
+
+#workspaces .text-button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  background: @nord9;
+  border-color: @nord9;
+  color: @nord3;
+}
+
+#workspaces .focused {
+  background: @nord15;
+  color: @nord3;
+}
+
+#window,
+#idle_inhibitor,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#pulseaudio,
+#battery,
+#clock,
+#workspaces,
+#language,
+#submap,
+#mpris,
+#tray:first-child
+{
+  background: @nord1;
+  border-radius: 8px;
+  padding: 0 8px;
+  margin: 4px 0px;
+}
+
+#window {
+  background: none;
+}
+
+#mpris {
+  background: alpha(@nord1, 0.5);
+}
+
+
+#language {
+    font-weight: 400;
+}
+
+#battery.charging {
+    background-color: @nord14;
+    color: @nord1;
+}
+
+@keyframes blink {
+    to {
+      background-color: @theme_base_color;
+      color: @theme_text_color;
+    }
+}
+
+#battery.warning:not(.charging) {
+    background-color: @warning_color;
+    animation-name: blink;
+    animation-duration: 1.0s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @error_color;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+

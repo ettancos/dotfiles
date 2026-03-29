@@ -1,0 +1,8 @@
+[core]
+account = tamas.tancos@emarsys.com
+disable_usage_reporting = False
+project = ems-gap-stage
+
+[privateca]
+location = europe-west3
+

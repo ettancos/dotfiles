@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+#clipman pick --notify --tool=bemenu --tool-args="-n -w"
+set -- --font='monospace:size=9' \
+    --log-level=none \
+    --log-no-syslog \
+    --horizontal-pad 10 \
+    --border-width 0 \
+    --border-radius 10 \
+    --line-height=15 \
+    --lines 20 \
+    --width 80
+
+$HOME/.cargo/bin/stash list | fuzzel --dmenu $@ 2>/dev/null | $HOME/.cargo/bin/stash decode | wl-copy
+

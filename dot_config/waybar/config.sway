@@ -1,0 +1,146 @@
+{
+    "layer": "top",
+    "position": "top",
+    "gtk-layer-shell": true,
+    "height": 35,
+	"margin-top": 0,
+	"margin-bottom": 2,
+	"spacing": 8,
+    // Choose the order of the modules
+    "modules-left": [
+     //   "hyprland/workspaces",
+     //   "hyprland/language",
+     //   "hyprland/submap",
+     //   "mpris"
+        "sway/workspaces",
+        "sway/language",
+        "sway/mode"
+    ],
+    //"modules-center": ["hyprland/window"],
+    "modules-center": ["sway/window"],
+    "modules-right": [
+        "idle_inhibitor",
+        "temperature",
+        "cpu",
+        "memory",
+        "backlight",
+        "pulseaudio",
+        "battery",
+        "tray",
+        "clock"
+    ],
+
+    // Modules configuration
+    "hyprland/workspaces": {
+        "on-click": "activate",
+    },
+
+    "hyprland/submap": {
+        "tooltip": false,
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "hyprland/language": {
+        "format": "<span style=\"italic\">{}</span>",
+        "format-en": "uk",
+        "format-de": "de",
+        "format-hu": "hu"
+    },
+
+    "idle_inhibitor": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        }
+    },
+
+    "tray": {
+        "tooltip": false,
+        "spacing": 10
+    },
+
+    "clock": {
+        "tooltip": false,
+        "format": "{:w%V %b %d %a %H:%M}",
+        "format-alt": "{:%d/%m %H:%M}"
+    },
+
+    "cpu": {
+        "interval": 1,
+        "format": "{usage}% "
+    },
+
+    "memory": {
+        "format": "{}% ",
+        "tooltip": false
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C ",
+        "on-click": "gnome-system-monitor"
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        // "format-icons": ["🌑", "🌒", "🌓", "🌔", "🌕"],
+        "format-icons": ["", ""],
+        "on-click": "brightnessctl -q s 75%",
+        "on-click-right": "brightnessctl -q s 5%",
+        "on-scroll-up": "brightnessctl -q s +1%",
+        "on-scroll-down": "brightnessctl -q s 1%-"
+    },
+    "bluetooth": {},
+    "mpris": {
+        "max-length": 30,
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "player-icons": {
+            "default": "▶",
+            "mpv": "🎵"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        // "ignored-players": ["firefox"]
+    },
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            "warning": 40,
+            "critical": 20
+        },
+        "tooltip": "true",
+        "tooltip-format": "{time}",
+        "format": "{capacity}%"
+    },
+
+    "wireplumber": {
+        "format": "{volume}% {icon}",
+        "format-muted": "",
+        "states": 3,
+        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "format-icons": ["", "", ""]
+    },
+
+    "pulseaudio": {
+        "tooltip": false,
+        "scroll-step": 3,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    }
+}
+

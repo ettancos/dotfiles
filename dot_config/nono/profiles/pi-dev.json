@@ -1,0 +1,8 @@
+{
+  "$schema": "https://nono.dev/schemas/nono-profile.schema.json",
+  "extends": ["pi", "dev"],
+  "meta": {
+    "name": "pi-dev",
+    "description": "Pi coding agent with all development toolchains"
+  }
+}

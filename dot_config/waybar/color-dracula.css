@@ -1,0 +1,60 @@
+/* Dracula Color Palette */
+@define-color foreground #f8f8f2;
+@define-color background rgba(40, 42, 54, 0.5);
+@define-color current-line #44475a;
+@define-color selection #44475a;
+@define-color orange #ffb86c;
+@define-color gray #44475a;
+@define-color black #21222c;
+@define-color red #ff5555;
+@define-color green #50fa7b;
+@define-color yellow #f1fa8c;
+@define-color cyan #8be9fd;
+@define-color blue #6272a4;
+@define-color purple #bd93f9;
+@define-color pink #ff79c6;
+@define-color white #ffffff;
+
+/* Bright variants */
+@define-color bright-red #ff6e6e;
+@define-color bright-green #69ff94;
+@define-color bright-yellow #ffffa5;
+@define-color bright-cyan #a4ffff;
+@define-color bright-blue #6272a4;
+@define-color bright-purple #d6acff;
+@define-color bright-pink #ff92df;
+
+/* Accent colors */
+@define-color accent-blue #89b4fa;
+
+/* Waybar component aliases */
+@define-color bg @background;
+@define-color fg @foreground;
+@define-color text @foreground;
+@define-color border @gray;
+@define-color hover @pink;
+@define-color active @green;
+@define-color inactive @gray;
+@define-color urgent @bright-red;
+@define-color critical @red;
+@define-color warning @yellow;
+@define-color success @green;
+
+/* Module styling */
+@define-color module-bg @black;
+@define-color module-text @text;
+@define-color warning-text @black;
+@define-color success-text @black;
+@define-color critical-text @white;
+@define-color critical-alt @white;
+@define-color critical-alt-text @black;
+
+/* Workspace specific */
+@define-color ws-bg @gray;
+@define-color ws-text @foreground;
+@define-color ws-active-bg @green;
+@define-color ws-active-text @black;
+@define-color ws-urgent-bg @bright-red;
+@define-color ws-urgent-text @white;
+@define-color ws-hover-bg @pink;
+@define-color ws-hover-text @black;

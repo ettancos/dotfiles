@@ -1,0 +1,253 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 35,
+  "margin-top": 0,
+  "margin-bottom": 2,
+  "spacing": 5,
+  "modules-left": [
+    "hyprland/workspaces",
+    "power-profiles-daemon",
+    "systemd-failed-units",
+    "hyprland/language",
+    "hyprland/submap",
+    "mpris"
+  ],
+
+  "modules-center": [
+    "hyprland/window"
+  ],
+
+  "modules-right": [
+    "idle_inhibitor",
+    "temperature",
+    "cpu",
+    "memory",
+    "backlight",
+    "group/group-volume",
+    "bluetooth",
+    "battery",
+    "tray",
+    "clock"
+  ],
+
+  "group/group-volume": {
+    "orientation": "inherit",
+    "modules": [
+      "wireplumber#source",
+      "wireplumber#sink"
+    ]
+  },
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "active": " ",
+      "default": " "
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": []
+    }
+  },
+
+  "hyprland/window": {
+    "max-length": 60,
+    "rewrite": {
+      "(.*) — Original Profile — Firefox Nightly": "󰈹  $1"
+    },
+    "separate-outputs": true
+  },
+
+  "hyprland/submap": {
+    "tooltip": false,
+    "format": "<span style=\"italic\">{}</span>"
+  },
+
+  "hyprland/language": {
+    "format": "<span style=\"italic\">{}</span>",
+    "format-en": "uk",
+    "format-de": "de",
+    "format-hu": "hu"
+  },
+
+  "idle_inhibitor": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " "
+    }
+  },
+
+  "tray": {
+    "tooltip": false,
+    "spacing": 10
+  },
+
+  "clock": {
+    "tooltip": true,
+    "format": "{:%V %b %d %a %H:%M}",
+    "format-alt": "{:%d/%m %H:%M}",
+    "tooltip-format": "{calendar}",
+    "locale": "C"
+  },
+
+  "cpu": {
+    "interval": 1,
+    "format": " {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11} {usage:>2}%",
+    "format-icons": [
+      "▁",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ]
+  },
+
+  "memory": {
+    "tooltip": false,
+    "interval": 15,
+    "format": " {used:0.1f}/{total:0.0f}G"
+  },
+
+  "temperature": {
+    "critical-threshold": 90,
+    "warning-threshold": 75,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "on-click": "gnome-system-monitor"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "tooltip": false,
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "🌑",
+      "🌒",
+      "🌓",
+      "🌔",
+      "🌕"
+    ],
+    "on-click": "brightnessctl -q s 75%",
+    "on-click-right": "brightnessctl -q s 5%",
+    "on-scroll-up": "brightnessctl -q s +1%",
+    "on-scroll-down": "brightnessctl -q s 1%-"
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "tooltip-format": "{controller_address} {status}\n\n{num_connections} connected",
+    "tooltip-format-disabled": "{status}",
+    "tooltip-format-connected": "{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "foot -a bluetui bluetui"
+  },
+
+  "mpris": {
+    "max-length": 30,
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "player-icons": {
+      "default": "▶",
+      "mpv": "🎵"
+    },
+    "status-icons": {
+      "paused": "⏸"
+    }
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": {
+      "charging": [
+        "󰢜 ",
+        "󰂆 ",
+        "󰂇 ",
+        "󰂈 ",
+        "󰢝 ",
+        "󰂉 ",
+        "󰢞 ",
+        "󰂊 ",
+        "󰂋 ",
+        "󰂅 "
+      ],
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ]
+    },
+    "format-full": "",
+    "interval": 5,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "tooltip": true,
+    "tooltip-format": "{time}"
+  },
+
+  "wireplumber#sink": {
+    "format": "{icon} {volume}%",
+    "format-icons": [
+      "󰕿",
+      "󰖀",
+      "󰕾"
+    ],
+    "format-muted": "󰝟",
+    "max-volume": 100,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "foot -a wiremix wiremix",
+    "scroll-step": 1,
+    "tooltip": false,
+    "tooltip-format": "{volume}%"
+  },
+
+  "wireplumber#source": {
+    "format": "",
+    "format-muted": "",
+    "max-volume": 100,
+    "node-type": "Audio/Source",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-click-right": "foot -a wiremix wiremix",
+    "scroll-step": 1,
+    "tooltip-format": "{volume}%"
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": " ",
+      "performance": "",
+      "balanced": " ",
+      "power-saver": " "
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://nono.dev/schemas/nono-profile.schema.json",
+  "extends": ["base"],
+  "meta": {
+    "name": "pi",
+    "description": "Pi coding agent with mise toolchains and shared credentials"
+  },
+  "filesystem": {
+    "read": [
+      "$HOME/AGENTS.md",
+      "$HOME/.agents"
+    ],
+    "allow": [
+      "$HOME/.pi"
+    ],
+    "allow_file": [
+      "$HOME/pi-lens-debug.log"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+host jump01a-vie1.emarsys.net
+  SetEnv TERM=xterm
+  IdentityFile ~/.ssh/opkssh_key
+
+host !jump01a-vie1.emarsys.net *.emarsys.net
+  SetEnv TERM=xterm
+  ProxyJump jump01a-vie1.emarsys.net
+
+Host git.emarsys.net
+  User git
+  SetEnv TERM=xterm
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/emarsys-ed25519
+
+Host github.wdf.sap.corp
+  User git
+  SetEnv TERM=xterm
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_ed25519
+
+Host github.com
+  User git
+  SetEnv TERM=xterm
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_ed25519
+  ConnectTimeout 10
+
+Host 192.168.8.1
+  User root
+  SetEnv TERM=xterm
+  IdentityFile ~/.ssh/id_ed25519

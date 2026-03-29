@@ -1,0 +1,20 @@
+[Unit]
+Description=PolicyKit Authentication Agent
+OnFailure=notify@%n.service
+PartOf=graphical-session.target
+Requires=graphical-session.target
+After=graphical-session.target
+# ConditionEnvironment requires systemd v247 to work correctly
+#ConditionEnvironment=WAYLAND_DISPLAY
+StartLimitIntervalSec=60
+StartLimitBurst=20
+
+[Service]
+Type=simple
+Slice=session.slice
+ExecStart=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=wlr-session.target

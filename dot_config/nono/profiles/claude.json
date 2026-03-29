@@ -1,0 +1,8 @@
+{
+  "$schema": "https://nono.dev/schemas/nono-profile.schema.json",
+  "extends": ["claude-code", "base"],
+  "meta": {
+    "name": "claude",
+    "description": "Claude Code with mise toolchains and shared credentials"
+  }
+}

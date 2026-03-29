@@ -1,0 +1,6 @@
+require("config.lazy")
+require("config.keymap")
+require("config.colorschemes")
+require("config.options")
+require("config.coauthor")
+-- require("config.plugins")

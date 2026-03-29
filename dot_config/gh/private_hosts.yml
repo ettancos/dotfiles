@@ -1,0 +1,16 @@
+github.wdf.sap.corp:
+    git_protocol: ssh
+    users:
+        I525646:
+    user: I525646
+github.tools.sap:
+    git_protocol: https
+    users:
+        I525646:
+    user: I525646
+github.com:
+    git_protocol: https
+    users:
+        ettancos:
+        tamas-tancos_sap:
+    user: ettancos

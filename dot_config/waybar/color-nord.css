@@ -1,0 +1,63 @@
+/* Nord Color Palette */
+@define-color nord0 #2e3440;
+@define-color nord1 #3b4252;
+@define-color nord2 #434c5e;
+@define-color nord3 #4c566a;
+@define-color nord4 #d8dee9;
+@define-color nord5 #e5e9f0;
+@define-color nord6 #eceff4;
+@define-color nord7 #8fbcbb;
+@define-color nord8 #88c0d0;
+@define-color nord9 #81a1c1;
+@define-color nord10 #5e81ac;
+@define-color nord11 #bf616a;
+@define-color nord12 #d08770;
+@define-color nord13 #ebcb8b;
+@define-color nord14 #a3be8c;
+@define-color nord15 #b48ead;
+
+/* Semantic aliases */
+@define-color background @nord0;
+@define-color foreground @nord5;
+@define-color current-line @nord2;
+@define-color selection @nord2;
+@define-color comment @nord3;
+@define-color red @nord11;
+@define-color orange @nord12;
+@define-color yellow @nord13;
+@define-color green @nord14;
+@define-color purple @nord15;
+@define-color cyan @nord8;
+@define-color blue @nord9;
+
+/* Waybar aliases */
+@define-color bg @background;
+@define-color fg @foreground;
+@define-color text @foreground;
+@define-color border @nord1;
+@define-color hover @nord8;
+@define-color active @nord14;
+@define-color inactive @nord3;
+@define-color urgent @nord11;
+@define-color critical @nord11;
+@define-color warning @nord13;
+@define-color success @nord14;
+
+/* Module styling */
+@define-color module-bg @nord2;
+@define-color module-text @text;
+@define-color warning-text @nord0;
+@define-color success-text @nord0;
+@define-color critical-text @nord6;
+@define-color critical-alt @nord6;
+@define-color critical-alt-text @nord0;
+
+/* Workspace specific */
+@define-color ws-bg @nord1;
+@define-color ws-text @foreground;
+@define-color ws-active-bg @nord14;
+@define-color ws-active-text @nord0;
+@define-color ws-urgent-bg @nord11;
+@define-color ws-urgent-text @nord6;
+@define-color ws-hover-bg @nord8;
+@define-color ws-hover-text @nord0;

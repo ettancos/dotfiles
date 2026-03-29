@@ -1,0 +1,38 @@
+{
+  "$schema": "https://nono.dev/schemas/nono-profile.schema.json",
+  "extends": "default",
+  "meta": {
+    "name": "base",
+    "description": "Shared base — mise toolchains, credentials, caches, and skills for all agents"
+  },
+  "policy": {
+    "exclude_groups": ["user_caches_linux"]
+  },
+  "security": {
+    "groups": ["git_config"]
+  },
+  "filesystem": {
+    "allow": [
+      "~/.npm",
+      "/tmp"
+    ],
+    "read": [
+      "~/.local/share/mise/installs/node",
+      "~/.local/share/mise/installs/bun",
+      "~/.cache/.bun",
+      "~/.cache/raggrep",
+      "~/.agents"
+    ]
+  },
+  "env_credentials": {
+    "cloudflare_api_token": "CLOUDFLARE_API_TOKEN",
+    "atlassian_api_token": "ATLASSIAN_API_TOKEN",
+    "sapjira_api_token": "SAPJIRA_API_TOKEN",
+    "context7_api_key": "CONTEXT7_API_KEY",
+    "fireworks_api_key": "FIREWORKS_API_KEY",
+    "llm_proxy_key": "LLM_PROXY_KEY"
+  },
+  "workdir": {
+    "access": "readwrite"
+  }
+}

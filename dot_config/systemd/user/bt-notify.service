@@ -1,0 +1,15 @@
+[Unit]
+Description=Bluetooth connection desktop notifications
+Documentation=man:notify-send(1)
+After=bluetooth.target graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/i525646/.local/bin/bt-notify
+Restart=on-failure
+RestartSec=5
+# Notify-send needs the session D-Bus; user services get this via XDG_RUNTIME_DIR
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%U/bus
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Unit failure notifier
+Requisite=graphical-session.target
+After=dbus.target
+
+[Service]
+Type=simple
+Slice=session.slice
+ExecStart=/usr/bin/notify-send "Starting unit %i failed!"

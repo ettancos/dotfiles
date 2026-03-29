@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+set -e
+
+LAUNCHER=~/bin/run-app
+APP="/usr/bin/flatpak run dev.zed.Zed"
+
+FOLDER=$(find $1/ -mindepth 1 -maxdepth 1 -type d | \
+    xargs -I {} basename {} | fuzzel --dmenu --log-level=none)
+
+if [ -z "$FOLDER" ]; then
+    echo Nothing selected...
+    exit 0
+fi
+
+#echo exec $LAUNCHER -p m $APP --ozone-platform=wayland $1/$FOLDER
+#exec $LAUNCHER -p m $APP --ozone-platform=wayland $1/$FOLDER
+exec $APP $1/$FOLDER
+

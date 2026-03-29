@@ -1,0 +1,5 @@
+--glob=!compile_commands.json
+--line-number
+--sort=path
+--hidden
+--no-heading

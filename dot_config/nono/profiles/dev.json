@@ -1,0 +1,57 @@
+{
+  "$schema": "https://nono.dev/schemas/nono-profile.schema.json",
+  "extends": ["base"],
+  "meta": {
+    "name": "dev",
+    "description": "All development toolchains — Go, JS/TS, Python, Rust, C/C++, and infrastructure (Terraform, Helm, Docker, gcloud)"
+  },
+  "filesystem": {
+    "allow": [
+      "~/.cache/go/pkg/mod",
+      "~/.cache/go-build",
+      "~/.cache/pip",
+      "~/.cache/uv",
+      "~/.cargo/registry",
+      "~/.cargo/git",
+      "~/.cache/sccache",
+      "~/.cmake",
+      "~/.terraform.d",
+      "~/.tflint.d",
+      "~/.cache/helm",
+      "~/.local/share/helm",
+      "~/.docker",
+      "~/.config/gcloud"
+    ],
+    "read": [
+      "~/.config/gh",
+      "~/.local/share/mise/installs/go/1.26.1",
+      "~/.local/share/mise/installs/python",
+      "~/.local/share/mise/installs/aqua-astral-sh-uv",
+      "~/.local/share/rustup",
+      "~/.cargo/bin",
+      "~/.local/share/mise/installs/aqua-mozilla-sccache",
+      "/usr/include",
+      "/usr/local/include",
+      "~/.local/share/mise/installs/aqua-hashicorp-terraform",
+      "~/.local/share/mise/installs/aqua-hashicorp-terraform-ls",
+      "~/.local/share/mise/installs/aqua-terraform-linters-tflint",
+      "~/.local/share/mise/installs/terraform",
+      "~/.local/share/mise/installs/aqua-kubernetes-sigs-kustomize",
+      "~/.local/share/mise/installs/aqua-helm-helm",
+      "~/.local/share/mise/installs/gcloud",
+      "~/apps/google-cloud-sdk"
+    ],
+    "read_file": [
+      "~/.config/npm/npmrc",
+      "~/.config/sccache/config",
+      "~/.config/helm/repositories.yaml",
+      "/usr/bin/docker"
+    ]
+  },
+  "security": {
+    "allowed_commands": [
+      "docker",
+      "gh"
+    ]
+  }
+}

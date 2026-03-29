@@ -1,0 +1,44 @@
+.env
+.direnv/
+.sisyphus/
+.scratch/
+.worktrees/
+
+# uv
+.python-version
+pyproject.toml
+uv.lock
+
+*~
+\#*\#
+.\#*
+*_flymake.*
+
+# Org mode files
+.org-id-locations
+*_archive
+
+# 
+
+.clade/
+
+*.out
+*.o
+*.so
+
+# Archives
+*.7zz
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+*.log
+*.sqlite
+
+dist/
+
+**/.claude/settings.local.json

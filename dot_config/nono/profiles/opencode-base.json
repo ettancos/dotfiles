@@ -1,0 +1,27 @@
+{
+  "$schema": "https://nono.dev/schemas/nono-profile.schema.json",
+  "extends": ["opencode", "base"],
+  "meta": {
+    "name": "opencode-base",
+    "description": "OpenCode with OMO, mise toolchains, and shared credentials"
+  },
+  "filesystem": {
+    "allow": [
+      "~/.config/opencode",
+      "~/.opencode",
+      "~/.local/share/opencode",
+      "~/.cache/opencode",
+      "~/.cache/oh-my-opencode",
+      "~/.claude/transcripts",
+      "~/.claude/todos"
+    ],
+    "read": [
+      "~/.claude/skills",
+      "~/.claude/commands",
+      "~/.claude/agents"
+    ],
+    "read_file": [
+      "~/.claude/settings.json"
+    ]
+  }
+}

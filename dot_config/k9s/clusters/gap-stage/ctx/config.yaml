@@ -1,0 +1,5 @@
+k9s:
+  cluster: gke_ems-gap-stage_europe-west3_gap-staging
+  featureGates:
+    nodeShell: true # => Enable this feature gate to make nodeShell available on this cluster
+

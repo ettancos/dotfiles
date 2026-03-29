@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+exec /usr/local/bin/fuzzel --log-level=none \
+    --log-no-syslog \
+    --launch-prefix="uwsm app --"
+
+#   --launch-prefix="$HOME/bin/run-app -p launcher"

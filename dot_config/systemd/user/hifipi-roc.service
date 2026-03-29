@@ -1,0 +1,13 @@
+[Unit]
+Description=hifipi ROC Network Audio Sink
+After=pipewire.service network-online.target
+Wants=pipewire.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/hifipi-roc-watch
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

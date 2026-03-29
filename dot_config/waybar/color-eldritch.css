@@ -1,0 +1,62 @@
+/* Eldritch Color Palette */
+@define-color background #212338;
+@define-color current-line #323449;
+@define-color foreground #ebfafa;
+@define-color comment #7081d0;
+@define-color cyan #04d1f9;
+@define-color green #37f499;
+@define-color orange #f7c67f;
+@define-color pink #f265b5;
+@define-color purple #a48cf2;
+@define-color red #f16c75;
+@define-color yellow #f1fc79;
+
+/* Dark variants */
+@define-color dark-bg #171928;
+@define-color dark-highlight #292e42;
+@define-color dark-black #414868;
+@define-color dark-fg #abb4da;
+@define-color dark-gutter #3b4261;
+@define-color dark-blue #6473b7;
+@define-color dark-blue-alt #5866a2;
+@define-color dark-purple #76639e;
+@define-color dark-cyan #10a1bd;
+@define-color dark-magenta #bf4f8e;
+@define-color dark-magenta-alt #722f55;
+@define-color dark-yellow #c0c95f;
+@define-color dark-green #33c57f;
+
+/* Bright variants */
+@define-color bright-red #f0313e;
+
+/* Waybar component aliases */
+@define-color bg @background;
+@define-color fg @foreground;
+@define-color text @foreground;
+@define-color border @current-line;
+@define-color hover @pink;
+@define-color active @green;
+@define-color inactive @comment;
+@define-color urgent @bright-red;
+@define-color critical @red;
+@define-color warning @yellow;
+@define-color success @green;
+
+/* Module styling */
+@define-color module-bg @current-line;
+@define-color module-text @text;
+@define-color warning-text @dark-bg;
+@define-color success-text @dark-bg;
+@define-color critical-text @foreground;
+@define-color critical-alt @foreground;
+@define-color critical-alt-text @dark-bg;
+
+/* Workspace specific */
+@define-color ws-bg @current-line;
+@define-color ws-text @foreground;
+@define-color ws-active-bg @green;
+@define-color ws-active-text @dark-bg;
+@define-color ws-urgent-bg @bright-red;
+@define-color ws-urgent-text @foreground;
+@define-color ws-hover-bg @pink;
+@define-color ws-hover-text @dark-bg;

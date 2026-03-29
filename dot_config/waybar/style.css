@@ -1,0 +1,135 @@
+/*@import "color-nord.css";*/
+/*@import "color-dracula.css";*/
+@import "color-eldritch.css";
+
+*:not(menu):not(menuitem) {
+  all: unset;
+  font-family: 'Inter Variable', 'Symbols Nerd Font';
+  font-size: 0.95em;
+}
+
+window#waybar {
+  background-color: alpha(@bg, 0.9);
+  color: @text;
+  border-bottom: 1px solid @border;
+}
+
+window#waybar.hidden {
+  opacity: 0.5;
+}
+
+tooltip {
+  border-radius: 8px;
+  padding: 15px;
+  background-color: alpha(@bg, 0);
+  color: @text;
+}
+
+tooltip.background {
+  background: alpha(@bg, 0.8);
+}
+
+#workspaces {
+  background-color: transparent;
+}
+
+#workspaces button {
+  all: initial;
+  min-width: 0;
+  box-shadow: inset 0 -3px transparent;
+  padding: 4px 8px;
+  margin: 4px 3px;
+  border-radius: 4px;
+  background-color: @ws-bg;
+  color: @ws-text;
+}
+
+#workspaces button.active {
+  color: @ws-active-text;
+  background-color: @ws-active-bg;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  color: @ws-hover-text;
+  background-color: @ws-hover-bg;
+}
+
+#workspaces button.urgent {
+  background-color: @ws-urgent-bg;
+  color: @ws-urgent-text;
+}
+
+#battery,
+#backlight,
+#clock,
+#cpu,
+#idle_inhibitor,
+#memory,
+#network,
+#temperature,
+#bluetooth,
+#tray {
+  border-radius: 4px;
+  margin: 4px 3px;
+  padding: 4px 12px;
+  background-color: @module-bg;
+  color: @module-text;
+}
+
+#tray window decoration {
+  box-shadow: none;
+}
+
+#tray menu {
+  opacity: 0.9;
+}
+
+#tray menu menuitem label,
+#tray menu menuitem {
+  color: @text;
+}
+/* Continuous background for audio modules */
+#wireplumber.source {
+  border-radius: 4px 0 0 4px;
+  margin: 4px 0 4px 3px;
+  padding: 4px 8px 4px 12px;
+  background-color: @module-bg;
+  color: @module-text;
+}
+
+#wireplumber.sink {
+  border-radius: 0 4px 4px 0;
+  margin: 4px 3px 4px 0;
+  padding: 4px 12px 4px 8px;
+  background-color: @module-bg;
+  color: @module-text;
+}
+
+#battery.warning {
+  background-color: @warning;
+  color: @warning-text;
+}
+
+#battery.charging {
+  background-color: @success;
+  color: @success-text;
+}
+
+#battery.critical:not(.charging) {
+  background-color: @critical;
+  color: @critical-text;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  to {
+    background-color: @critical-alt;
+    color: @critical-alt-text;
+  }
+}

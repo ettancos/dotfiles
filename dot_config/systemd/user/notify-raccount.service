@@ -1,0 +1,9 @@
+[Unit]
+Description="User Notification if SSH Login was triggered.
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/notify-send -u critical "raccount logged in via SSH!"
+
+[Install]
+WantedBy=graphical.target

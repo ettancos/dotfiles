@@ -1,0 +1,49 @@
+k9s:
+  liveViewAutoRefresh: false
+  screenDumpDir: /home/ttancos/.local/state/k9s/screen-dumps
+  refreshRate: 2
+  maxConnRetry: 3
+  readOnly: false
+  noExitOnCtrlC: false
+  ui:
+    enableMouse: false
+    headless: false
+    logoless: false
+    crumbsless: false
+    noIcons: false
+  skipLatestRevCheck: false
+  disablePodCounting: false
+  shellPod:
+    image: eu.gcr.io/ems-gap-images/netshoot-unprivileged
+    namespace: cloud-platform
+    limits:
+      cpu: 500m
+      memory: 500Mi
+  imageScans:
+    enable: false
+    exclusions:
+      namespaces: []
+      labels: {}
+  namespace:
+    active: cloud-platform
+    lockFavorites: false
+    favorites:
+    - kube-system
+    - gap-system
+    - istio-system
+    - ingress-nginx
+    - cloud-platform
+  logger:
+    tail: 200
+    buffer: 5000
+    sinceSeconds: -1
+    fullScreenLogs: false
+    textWrap: false
+    showTime: false
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70

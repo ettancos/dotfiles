@@ -1,0 +1,80 @@
+[[profile]]
+name = "office-2x27 HDMI"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+output = [
+  { match="DELL U2722DE", position={x=0,y=0}, transform="normal", scale=1.0, enable=true },
+  { match="HDMI-A-1", position={x=2560,y=0}, transform="normal", scale=1.0, enable=true },
+  { match="eDP-1", position={x=500,y=1440}, scale=1.0, enable=true }
+]
+
+[[profile]]
+name = "office-2x27"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+output = [
+  { match="DELL U2722DE", position={x=2560,y=0}, scale=1.0, transform="normal", enable=true },
+  { match="DELL U2722DE", position={x=0,y=0}, scale=1.0, transform="normal", enable=true },
+  { match="eDP-1", position={x=2000,y=1440}, scale=1.0, enable=true }
+]
+
+[[profile]]
+name = "office-27"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+output = [
+  { match="DELL U2722DE", position={x=0,y=0}, transform="normal", scale=1.0, enable=true },
+  { match="eDP-1", position={x=0,y=1440}, scale=1.0, enable=true }
+]
+
+[[profile]]
+name = "office-38"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+output = [
+#  { match = "eDP-1", position={x=0,y=0}, scale = 1.0, enable=true },
+#  { match="DELL U3821DW", position={x=1920,y=0}, transform="normal", scale=1.0, enable=true }
+  { match="DELL U3821DW", position={x=0,y=0}, transform="normal", scale=1.0, enable=true },
+  { match = "eDP-1", position={x=860,y=1600}, scale = 1.0, enable=true }
+]
+
+[[profile]]
+name = "office-34"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+output = [
+  { match="DELL U3421WE", position={x=0,y=0}, transform="normal", scale=1.0, enable=true },
+  { match = "eDP-1", position={x=860,y=1440}, scale = 1.0, enable=true }
+]
+
+[[profile]]
+name = "office-hu-34"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+output = [
+  { match="DELL P3424WEB", position={x=0,y=0}, scale=1.0, enable=true },
+  { match = "eDP-1", position={x=860,y=1440}, scale = 1.0, enable=true }
+]
+
+[[profile]]
+name = "roxana"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+output = [
+  { match="eDP-1", position={x=0,y=0}, scale=1.17578125, enable=true },
+  { match="DELL P2419H B3CNFZ2", position={x=2256,y=0}, scale=1.0, enable=true }
+]
+
+[[profile]]
+name = "home"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+output = [
+  { match="DELL P2419H", position={x=0,y=0}, scale=1.0, enable=true },
+  { match="eDP-1", position={x=1920,y=0}, scale=1.0, enable=true }
+]
+
+[[profile]]
+name = "home2"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+output = [
+  { match="HDMI-A-1", position={x=0,y=0}, scale=1.0, enable=true },
+  { match="eDP-1", position={x=0,y=1080}, scale=1.0, enable=true }
+]
+
+[[profile]]
+name = "single"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+output = [{ match="eDP-1", position={x=0,y=0}, scale=1.0, enable=true }]
