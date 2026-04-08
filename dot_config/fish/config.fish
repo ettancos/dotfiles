@@ -9,9 +9,10 @@ starship init fish | source
 
 #set -x GPG_TTY (tty)
 
-for alias in (cat ~/.alias | rg -v "^#" | grep "=")
-    set -l a (string split "=" $alias)
-    alias "(echo $a[1])" $a[2]
+for line in (rg -v "^#" --no-line-number ~/.alias | grep "=")
+    set -l name (string split -m1 "=" $line)[1]
+    set -l value (string split -m1 "=" $line)[2]
+    alias $name $value
 end
 
 complete -f -c ppa -d "Repo file name" -a "(ls -1 /etc/apt/sources.list.d | sed -E 's/.list(.save)?\$//')"

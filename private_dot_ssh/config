@@ -6,6 +6,11 @@ host !jump01a-vie1.emarsys.net *.emarsys.net
   SetEnv TERM=xterm
   ProxyJump jump01a-vie1.emarsys.net
 
+Host fw.local
+  User ttancos
+  SetEnv TERM=xterm
+  PreferredAuthentications publickey
+
 Host git.emarsys.net
   User git
   SetEnv TERM=xterm

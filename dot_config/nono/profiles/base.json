@@ -6,22 +6,26 @@
     "description": "Shared base — mise toolchains, credentials, caches, and skills for all agents"
   },
   "policy": {
-    "exclude_groups": ["user_caches_linux"]
   },
   "security": {
-    "groups": ["git_config"]
+    "groups": ["git_config"],
+    "allowed_commands": [
+      "atlassian-sync"
+    ]
   },
   "filesystem": {
     "allow": [
       "~/.npm",
-      "/tmp"
+      "/tmp",
+      "~/.cache/atlassian-sync"
     ],
     "read": [
       "~/.local/share/mise/installs/node",
       "~/.local/share/mise/installs/bun",
-      "~/.cache/.bun",
-      "~/.cache/raggrep",
       "~/.agents"
+    ],
+    "read_file": [
+      "~/.local/bin/atlassian-sync"
     ]
   },
   "env_credentials": {
