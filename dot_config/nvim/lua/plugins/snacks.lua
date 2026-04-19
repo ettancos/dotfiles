@@ -9,8 +9,7 @@ return {
 			bigfile = { enabled = true },
 			dashboard = { enabled = true },
 			explorer = {
-				enabled = true,
-				replace_netrw = true,
+				enabled = false,
 			},
 			indent = { enabled = true },
 			input = { enabled = true },
@@ -82,13 +81,7 @@ return {
 				end,
 				desc = "Notification History",
 			},
-			{
-				"<leader>e",
-				function()
-					Snacks.explorer()
-				end,
-				desc = "File Explorer",
-			},
+			-- <leader>e is now handled by oil.nvim
 			-- find
 			{
 				"<leader>fb",
