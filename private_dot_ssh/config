@@ -1,11 +1,3 @@
-host jump01a-vie1.emarsys.net
-  SetEnv TERM=xterm
-  IdentityFile ~/.ssh/opkssh_key
-
-host !jump01a-vie1.emarsys.net *.emarsys.net
-  SetEnv TERM=xterm
-  ProxyJump jump01a-vie1.emarsys.net
-
 Host fw.local
   User ttancos
   SetEnv TERM=xterm
@@ -29,6 +21,14 @@ Host github.com
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/id_ed25519
   ConnectTimeout 10
+
+host jump01a-vie1.emarsys.net
+  SetEnv TERM=xterm
+  IdentityFile ~/.ssh/opkssh_key
+
+host !jump01a-vie1.emarsys.net !git.emarsys.net *.emarsys.net
+  SetEnv TERM=xterm
+  ProxyJump jump01a-vie1.emarsys.net
 
 Host 192.168.8.1
   User root

@@ -33,8 +33,8 @@ abbr -a -- kctx kubectl config use-context
 
 abbr buildpkg "$(string join ' \\'\n -- \
     'env' \
-    'CC=gcc-15' \
-    'CXX=g++-15' \
+    'CC=gcc-16' \
+    'CXX=g++-16' \
     'CC_LD=mold' \
     'CXX_LD=mold' \
     'LDFLAGS=-B(which mold)' \
@@ -46,8 +46,8 @@ abbr buildpkg "$(string join ' \\'\n -- \
 
 abbr lcmake "$(string join ' \\'\n -- \
     'cmake --no-warn-unused-cli' \
-    '-DCMAKE_C_COMPILER=gcc-15' \
-    '-DCMAKE_CXX_COMPILER=g++-15' \
+    '-DCMAKE_C_COMPILER=gcc-16' \
+    '-DCMAKE_CXX_COMPILER=g++-16' \
     '-DCMAKE_C_USING_LINKER_LLD="-fuse-ld=mold"' \
     '-DCMAKE_CXX_USING_LINKER_LLD="-fuse-ld=mold"' \
     '-DCMAKE_C_FLAGS="-march=native -fivopts -fmodulo-sched"' \
@@ -60,8 +60,8 @@ abbr lcmake "$(string join ' \\'\n -- \
 
 abbr bcmake "$(string join ' \\'\n -- \
     'cmake --no-warn-unused-cli' \
-    '-DCMAKE_C_COMPILER=gcc-15' \
-    '-DCMAKE_CXX_COMPILER=g++-15' \
+    '-DCMAKE_C_COMPILER=gcc-16' \
+    '-DCMAKE_CXX_COMPILER=g++-16' \
     '-DCMAKE_C_USING_LINKER_LLD="-fuse-ld=mold"' \
     '-DCMAKE_CXX_USING_LINKER_LLD="-fuse-ld=mold"' \
     '-DCMAKE_C_FLAGS="-march=native -fivopts -fmodulo-sched"' \

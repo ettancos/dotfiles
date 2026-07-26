@@ -18,7 +18,6 @@ cilium-hubble = 'latest'
 'aqua:derailed/k9s' = 'latest'
 'aqua:kubernetes-sigs/kind' = 'latest'
 'aqua:jdx/hk' = 'latest'
-'aqua:mrjosh/helm-ls' = 'latest'
 'aqua:norwoodj/helm-docs' = 'latest'
 'aqua:tmccombs/hcl2json' = 'latest'
 'aqua:git-lfs/git-lfs' = 'latest'
@@ -26,7 +25,6 @@ cilium-hubble = 'latest'
 'aqua:nektos/act' = 'latest'
 'aqua:projectcalico/calico/calicoctl' = 'latest'
 'aqua:cloudflare/cfssl/cfssl' = 'latest'
-'aqua:bridgecrewio/checkov' = 'latest'
 'aqua:FiloSottile/mkcert' = 'latest'
 'aqua:mozilla/sccache' = 'latest'
 'aqua:helm/helm' = '3.20.0'
@@ -53,7 +51,7 @@ cilium-hubble = 'latest'
 'aqua:sharkdp/hyperfine' = 'latest'
 'aqua:JohnnyMorganz/StyLua' = 'latest'
 'aqua:dandavison/delta' = 'latest'
-gradle = "latest"
+pipx = "latest"
 
 [settings]
 experimental = true

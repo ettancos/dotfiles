@@ -6,7 +6,7 @@ Requisite=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=%h/.cargo/bin/stash --excluded-apps Bitwarden watch
+ExecStart=%h/.cargo/bin/stash --max-items 750 --excluded-apps Bitwarden watch
 Restart=on-failure
 LoadCredential=clipboard_filter:/etc/stash/clipboard_filter
 

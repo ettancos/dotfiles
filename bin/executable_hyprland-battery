@@ -13,9 +13,9 @@ function maybe_notify --argument-names message
     end
 end
 
-function hkw --argument-names key value
-    if not hyprctl keyword $key $value >/dev/null 2>&1
-        echo "Error: Failed to set $key" >&2
+function hkw --argument-names lua_expr
+    if not hyprctl eval "$lua_expr" >/dev/null 2>&1
+        echo "Error: Failed to eval $lua_expr" >&2
         return 1
     end
 end
@@ -28,8 +28,7 @@ function do_reload
 end
 
 function disable_effects
-    hkw decoration:blur:enabled 0; or return 1
-    hkw animations:enabled 0; or return 1
+    hkw 'hl.config({ decoration = { blur = { enabled = false } }, animations = { enabled = false } })'; or return 1
 end
 
 function get_battery_device
@@ -98,9 +97,7 @@ function apply_mode --argument-names mode capacity
         case critical
             echo "Battery: $capacity% - CRITICAL: Entering aggressive power save"
             disable_effects; or return 1
-            hkw general:gaps_in 0; or return 1
-            hkw general:gaps_out 0; or return 1
-            hkw general:border_size 0; or return 1
+            hkw 'hl.config({ general = { gaps_in = 0, gaps_out = 0, border_size = 0 } })'; or return 1
             maybe_notify "🔴 Battery CRITICAL: $capacity% - Aggressive power save"
 
         case '*'
