@@ -119,4 +119,8 @@
     desktop_entry = "us.zoom.Zoom"
     default_icon = us.zoom.Zoom
 
+[intune]
+    summary = "intune-agent.service"
+    skip_display = yes
+
 # vim: ft=cfg
