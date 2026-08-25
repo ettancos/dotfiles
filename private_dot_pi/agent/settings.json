@@ -1,0 +1,33 @@
+{
+  "lastChangelogVersion": "0.84.2",
+  "packages": [
+    "npm:@saadjs/pi-status",
+    "npm:pi-mcp-adapter",
+    "npm:pi-skill-palette",
+    "npm:pi-notify",
+    "npm:@ogulcancelik/pi-tmux",
+    "npm:pi-auto-agents",
+    "npm:pi-subagents",
+    "git:github.com/badlogic/pi-telegram",
+    "git:github.com/pasky/chrome-cdp-skill",
+    "npm:@ogulcancelik/pi-session-recall",
+    "npm:pi-llm-wiki",
+    "npm:pi-lsp-lite"
+  ],
+  "defaultProvider": "hai-openai",
+  "enabledModels": [
+    "fw-local/*",
+    "hai-anthropic/*",
+    "hai-gemini/*",
+    "hai-openai/*",
+    "github-copilot/claude-sonnet-5",
+    "github-copilot/claude-opus-5",
+    "github-copilot/gpt-5.6-luna",
+    "github-copilot/gpt-5.6-sol",
+    "github-copilot/gpt-5.6-terra"
+  ],
+  "defaultModel": "gpt-5.6-luna",
+  "defaultThinkingLevel": "high",
+  "hideThinkingBlock": false,
+  "theme": "dark"
+}

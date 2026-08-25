@@ -1,0 +1,10 @@
+{
+	"name": "web-tools",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "webfetch and websearch tools for pi — inspired by opencode",
+	"dependencies": {},
+	"pi": {
+		"extensions": ["./index.js"]
+	}
+}
