@@ -1,7 +1,7 @@
 import { truncateHead, DEFAULT_MAX_BYTES, DEFAULT_MAX_LINES, formatSize } from "@mariozechner/pi-coding-agent";
 import { Text } from "@mariozechner/pi-tui";
 import { Type } from "@sinclair/typebox";
-import { execSync } from "node:child_process";
+import { execSync, spawnSync } from "node:child_process";
 import { platform } from "node:os";
 function which(cmd) {
   try {
@@ -97,7 +97,7 @@ function clipboard_default(pi) {
     }),
     async execute(_toolCallId, params) {
       try {
-        execSync([writeCmd, ...writeArgs].join(" "), { input: params.text });
+        spawnSync(writeCmd, writeArgs, { input: params.text, stdio: ["pipe", "ignore", "ignore"] });
         const size = Buffer.byteLength(params.text, "utf-8");
         return {
           content: [{ type: "text", text: `Wrote ${formatSize(size)} to clipboard.` }]

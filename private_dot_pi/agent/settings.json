@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.2",
+  "lastChangelogVersion": "0.84.3",
   "packages": [
     "npm:@saadjs/pi-status",
     "npm:pi-mcp-adapter",
@@ -14,7 +14,7 @@
     "npm:pi-llm-wiki",
     "npm:pi-lsp-lite"
   ],
-  "defaultProvider": "hai-openai",
+  "defaultProvider": "hai-anthropic",
   "enabledModels": [
     "fw-local/*",
     "hai-anthropic/*",
@@ -26,7 +26,7 @@
     "github-copilot/gpt-5.6-sol",
     "github-copilot/gpt-5.6-terra"
   ],
-  "defaultModel": "gpt-5.6-luna",
+  "defaultModel": "anthropic--claude-4.6-sonnet",
   "defaultThinkingLevel": "high",
   "hideThinkingBlock": false,
   "theme": "dark"

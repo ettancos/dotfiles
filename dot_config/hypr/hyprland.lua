@@ -398,12 +398,20 @@ end)
 hl.layer_rule({ match = { namespace = "hyprpicker" }, no_anim = true })
 hl.layer_rule({ match = { namespace = "launcher" }, dim_around = true, blur = true, no_anim = true })
 
+hl.workspace_rule({ workspace = "w[tv1]s[true]", gaps_out = 100, gaps_in = 20 })
+hl.workspace_rule({ workspace = "f[1]s[true]", gaps_out = 100, gaps_in = 20 })
 -- ── Window rules ─────────────────────────────────────────────────────────────
 
 -- Global
 hl.window_rule({ match = { class = "^()$", title = "^()$" }, no_blur = true })
 hl.window_rule({ match = { float = false }, no_shadow = true })
 hl.window_rule({ match = { float = true }, persistent_size = true })
+hl.window_rule({
+	match = {
+		class = ".*",
+	},
+	suppress_event = "maximize",
+})
 
 -- XWayland
 hl.window_rule({
