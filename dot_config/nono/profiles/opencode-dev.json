@@ -1,8 +1,0 @@
-{
-  "$schema": "https://nono.dev/schemas/nono-profile.schema.json",
-  "extends": ["opencode-base", "dev"],
-  "meta": {
-    "name": "opencode-dev",
-    "description": "OpenCode with all development toolchains"
-  }
-}

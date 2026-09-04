@@ -1,8 +1,0 @@
-{
-  "$schema": "https://nono.dev/schemas/nono-profile.schema.json",
-  "extends": ["claude", "dev"],
-  "meta": {
-    "name": "claude-dev",
-    "description": "Claude Code with all development toolchains"
-  }
-}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://nono.dev/schemas/nono-profile.schema.json",
+  "extends": ["base"],
+  "meta": {
+    "name": "infra-tooling",
+    "description": "Infrastructure tooling with Kubernetes, cloud, container, SSH, Terraform, and Helm state"
+  },
+  "filesystem": {
+    "allow": [
+      "~/.terraform.d",
+      "~/.tflint.d",
+      "~/.cache/helm",
+      "~/.local/share/helm",
+      "~/.docker",
+      "~/.config/gcloud",
+      "~/.kube",
+      "~/.ssh"
+    ],
+    "read": [
+      "~/.local/share/mise/installs/aqua-hashicorp-terraform",
+      "~/.local/share/mise/installs/aqua-hashicorp-terraform-ls",
+      "~/.local/share/mise/installs/aqua-terraform-linters-tflint",
+      "~/.local/share/mise/installs/terraform",
+      "~/.local/share/mise/installs/aqua-kubernetes-sigs-kustomize",
+      "~/.local/share/mise/installs/aqua-helm-helm",
+      "~/.local/share/mise/installs/gcloud",
+      "~/apps/google-cloud-sdk"
+    ],
+    "read_file": [
+      "~/.config/helm/repositories.yaml",
+      "/usr/bin/docker"
+    ],
+    "bypass_protection": [
+      "~/.docker",
+      "~/.config/gcloud",
+      "~/.kube",
+      "~/.ssh"
+    ],
+    "unix_socket": [
+      "/run/docker.sock",
+      "$XDG_RUNTIME_DIR/gcr/ssh"
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.3",
+  "lastChangelogVersion": "0.84.4",
   "packages": [
     "npm:@saadjs/pi-status",
     "npm:pi-mcp-adapter",
@@ -12,10 +12,13 @@
     "git:github.com/pasky/chrome-cdp-skill",
     "npm:@ogulcancelik/pi-session-recall",
     "npm:pi-llm-wiki",
-    "npm:pi-lsp-lite"
+    "npm:pi-lsp-lite",
+    "npm:pi-context-prune",
+    "npm:pi-cache-graph"
   ],
   "defaultProvider": "hai-anthropic",
   "enabledModels": [
+    "nvidia/moonshotai/*",
     "fw-local/*",
     "hai-anthropic/*",
     "hai-gemini/*",
@@ -28,6 +31,6 @@
   ],
   "defaultModel": "anthropic--claude-4.6-sonnet",
   "defaultThinkingLevel": "high",
-  "hideThinkingBlock": false,
+  "hideThinkingBlock": true,
   "theme": "dark"
 }

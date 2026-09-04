@@ -2,12 +2,17 @@ import { truncateHead, DEFAULT_MAX_BYTES, DEFAULT_MAX_LINES, formatSize } from "
 import { StringEnum } from "@mariozechner/pi-ai";
 import { Text } from "@mariozechner/pi-tui";
 import { Type } from "@sinclair/typebox";
+import {
+  DEFAULT_CONTEXT_MAX_CHARACTERS,
+  DEFAULT_NUM_RESULTS,
+  DEFAULT_SEARCH_TYPE,
+  compactSearchOutput,
+} from "./search-output.js";
 const MAX_RESPONSE_SIZE = 5 * 1024 * 1024;
 const DEFAULT_TIMEOUT = 3e4;
 const MAX_TIMEOUT = 12e4;
 const USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36";
 const EXA_MCP_URL = "https://mcp.exa.ai/mcp";
-const DEFAULT_NUM_RESULTS = 8;
 function decodeHtmlEntities(text) {
   return text.replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'");
 }
@@ -194,22 +199,23 @@ ${md}` : md;
     description: [
       "Search the web for information using Exa AI. No API key required.",
       "- Performs real-time web searches with up-to-date results",
-      "- Returns content from the most relevant websites",
-      "- Supports configurable result counts (default: 8)",
-      "- Search types: 'auto' (balanced, default), 'fast' (quick), 'deep' (comprehensive)",
+      "- Returns compact excerpts from the most relevant websites",
+      "- Supports configurable result counts (default: 3)",
+      "- Search types: 'auto' (balanced), 'fast' (quick, default), 'deep' (comprehensive)",
       "- Live crawl modes: 'fallback' (default) or 'preferred'",
       "- Use websearch for discovery, webfetch for retrieving a specific URL",
       "- Use perplexity_search when you want a synthesised answer rather than a list of sources",
+      "- Search output is capped at 10,000 characters to preserve model context",
       `- The current year is ${(/* @__PURE__ */ new Date()).getFullYear()}. Use the current year when searching for recent information.`
     ].join("\n"),
     parameters: Type.Object({
       query: Type.String({ description: "Search query" }),
       numResults: Type.Optional(
-        Type.Number({ description: "Number of results to return (default: 8)" })
+        Type.Number({ description: "Number of results to return (default: 3)" })
       ),
       type: Type.Optional(
         StringEnum(["auto", "fast", "deep"], {
-          description: "Search type: 'auto' (default), 'fast', or 'deep'"
+          description: "Search type: 'auto' (balanced), 'fast' (quick, default), or 'deep'"
         })
       ),
       livecrawl: Type.Optional(
@@ -218,7 +224,7 @@ ${md}` : md;
         })
       ),
       contextMaxCharacters: Type.Optional(
-        Type.Number({ description: "Max characters for context (default: 10000)" })
+        Type.Number({ description: "Max characters for Exa context (default: 2500)" })
       )
     }),
     async execute(_toolCallId, params, signal) {
@@ -230,10 +236,10 @@ ${md}` : md;
           name: "web_search_exa",
           arguments: {
             query: params.query,
-            type: params.type || "auto",
-            numResults: params.numResults || DEFAULT_NUM_RESULTS,
-            livecrawl: params.livecrawl || "fallback",
-            contextMaxCharacters: params.contextMaxCharacters
+            type: params.type ?? DEFAULT_SEARCH_TYPE,
+            numResults: params.numResults ?? DEFAULT_NUM_RESULTS,
+            livecrawl: params.livecrawl ?? "fallback",
+            contextMaxCharacters: params.contextMaxCharacters ?? DEFAULT_CONTEXT_MAX_CHARACTERS
           }
         }
       };
@@ -264,10 +270,12 @@ ${md}` : md;
             try {
               const data = JSON.parse(line.substring(6));
               if (data.result?.content?.length > 0) {
-                const output = truncateOutput(data.result.content[0].text);
+                const output = compactSearchOutput(data.result.content[0].text, {
+                  maxResults: params.numResults ?? DEFAULT_NUM_RESULTS,
+                });
                 return {
                   content: [{ type: "text", text: output }],
-                  details: { query: params.query, numResults: params.numResults || DEFAULT_NUM_RESULTS }
+                  details: { query: params.query, numResults: params.numResults ?? DEFAULT_NUM_RESULTS }
                 };
               }
             } catch {
@@ -277,10 +285,12 @@ ${md}` : md;
         try {
           const data = JSON.parse(responseText);
           if (data.result?.content?.length > 0) {
-            const output = truncateOutput(data.result.content[0].text);
+            const output = compactSearchOutput(data.result.content[0].text, {
+              maxResults: params.numResults ?? DEFAULT_NUM_RESULTS,
+            });
             return {
               content: [{ type: "text", text: output }],
-              details: { query: params.query, numResults: params.numResults || DEFAULT_NUM_RESULTS }
+              details: { query: params.query, numResults: params.numResults ?? DEFAULT_NUM_RESULTS }
             };
           }
         } catch {

@@ -1,0 +1,76 @@
+{
+  "settings": {
+    "toolPrefix": "server",
+    "idleTimeout": 10
+  },
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "${CONTEXT7_API_KEY}"
+      ],
+      "lifecycle": "lazy",
+      "directTools": true
+    },
+    "jira": {
+      "url": "https://mcp.atlassian.com/v1/mcp",
+      "auth": "oauth",
+      "lifecycle": "lazy",
+      "directTools": false
+    },
+    "firefox": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "firefox-devtools-mcp@latest",
+        "--connect-existing",
+        "--marionette-port",
+        "2828"
+      ],
+      "lifecycle": "lazy",
+      "directTools": false
+    },
+    "k8s": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "kubernetes-mcp-server@latest",
+        "--read-only"
+      ],
+      "lifecycle": "lazy"
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "lifecycle": "lazy"
+    },
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": "/home/i525646/.pi/agent/memory.json"
+      },
+      "lifecycle": "lazy"
+    },
+    "cloudflare-api": {
+      "url": "https://mcp.cloudflare.com/mcp",
+      "auth": "bearer",
+      "bearerTokenEnv": "CLOUDFLARE_API_TOKEN",
+      "lifecycle": "lazy"
+    },
+    "sap-jira": {
+      "url": "https://mcp.jira.tools.sap/mcp",
+      "auth": "oauth",
+      "lifecycle": "lazy"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://nono.dev/schemas/nono-profile.schema.json",
+  "extends": ["pi", "infra-tooling"],
+  "meta": {
+    "name": "pi-infra",
+    "description": "Pi coding agent with infrastructure tooling and cloud/container access"
+  }
+}

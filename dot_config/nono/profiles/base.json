@@ -5,13 +5,8 @@
     "name": "base",
     "description": "Shared base — mise toolchains, credentials, caches, and skills for all agents"
   },
-  "policy": {
-  },
-  "security": {
-    "groups": ["git_config"],
-    "allowed_commands": [
-      "atlassian-sync"
-    ]
+  "groups": {
+    "include": ["git_config"]
   },
   "filesystem": {
     "allow": [
@@ -31,7 +26,6 @@
   "env_credentials": {
     "cloudflare_api_token": "CLOUDFLARE_API_TOKEN",
     "atlassian_api_token": "ATLASSIAN_API_TOKEN",
-    "sapjira_api_token": "SAPJIRA_API_TOKEN",
     "context7_api_key": "CONTEXT7_API_KEY",
     "fireworks_api_key": "FIREWORKS_API_KEY",
     "llm_proxy_key": "LLM_PROXY_KEY"
