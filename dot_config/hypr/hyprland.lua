@@ -12,6 +12,7 @@ end
 hl.on("hyprland.start", function()
 	hl.exec_cmd("uwsm finalize")
 	uwsm("xsettingsd")
+	uwsm("hypridle")
 	uwsm("hyprland-battery --monitor")
 	uwsm("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
 	hl.exec_cmd("awww-daemon && awww img ~/images/ryan-lum-1ak3Z7ZmtQA-unsplash.jpg")

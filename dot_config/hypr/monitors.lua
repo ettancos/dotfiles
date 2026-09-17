@@ -90,39 +90,23 @@ local function apply_monitor_profile(notify, monitors)
 	end
 end
 
-local DEBOUNCE_MS = 1000
-local RETRY_MS = 500
-local MAX_RETRIES = 10
+local DEBOUNCE_MS = 5000
 
 local pending_notification = false
-local retry_count = 0
 local profile_timer
 
 local function schedule_monitor_profile(notify)
 	pending_notification = pending_notification or notify
-	retry_count = 0
 	profile_timer:set_timeout(DEBOUNCE_MS)
 end
 
 profile_timer = hl.timer(function()
-	local monitors = hl.get_monitors()
-	if not monitors_ready(monitors) then
-		if retry_count >= MAX_RETRIES then
-			pending_notification = false
-			profile_timer:set_enabled(false)
-			hl.exec_cmd('notify-send -u critical hyprland "Monitor profile not applied: monitor state did not stabilize"')
-			return
-		end
-
-		retry_count = retry_count + 1
-		profile_timer:set_timeout(RETRY_MS)
-		return
-	end
-
 	local notify = pending_notification
 	pending_notification = false
 	profile_timer:set_enabled(false)
-	apply_monitor_profile(notify, monitors)
+
+	local monitors = hl.get_monitors()
+	if monitors_ready(monitors) then apply_monitor_profile(notify, monitors) end
 end, {
 	timeout = DEBOUNCE_MS,
 	type = "repeat",
