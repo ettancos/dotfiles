@@ -120,6 +120,10 @@ hl.config({
 		enabled = true,
 	},
 
+	render = {
+		cm_auto_hdr = true,
+	},
+
 	misc = {
 		font_family = "Inter Variable",
 		disable_hyprland_guiutils_check = true,

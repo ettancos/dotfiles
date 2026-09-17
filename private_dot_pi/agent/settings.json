@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.4",
+  "lastChangelogVersion": "0.85.1",
   "packages": [
     "npm:@saadjs/pi-status",
     "npm:pi-mcp-adapter",
@@ -32,5 +32,15 @@
   "defaultModel": "anthropic--claude-4.6-sonnet",
   "defaultThinkingLevel": "high",
   "hideThinkingBlock": true,
-  "theme": "dark"
+  "theme": "dark",
+  "compaction": {
+    "enabled": true
+  },
+  "terminal": {
+    "showTerminalProgress": false
+  },
+  "steeringMode": "one-at-a-time",
+  "transport": "auto",
+  "showCacheMissNotices": true,
+  "tuiMode": "regular"
 }
