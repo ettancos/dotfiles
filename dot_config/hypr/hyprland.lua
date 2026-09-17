@@ -380,6 +380,12 @@ hl.bind(
 
 local lr = { locked = true, repeating = true }
 local lk = { locked = true }
+
+-- Blank the internal panel when the lid closes while docked (external monitor
+-- present); undocked lid-close is instead handled by logind hibernating.
+hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("hyprctl dispatch dpms off eDP-1"), lk)
+hl.bind("switch:off:Lid Switch", hl.dsp.exec_cmd("hyprctl dispatch dpms on eDP-1"), lk)
+
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -q s +5%"), lr)
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -q s 5%-"), lr)
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+"), lr)
